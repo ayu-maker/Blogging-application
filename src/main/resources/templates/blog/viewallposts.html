@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+  <link th:href="@{/css/clientpostview.css}" rel="stylesheet" />
+  <link th:href="@{/css/postview.css}" rel="stylesheet"/>
+
+
+  <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <div class="logo">
+      <a href="#">BLOGGERSIDE</a>
+    </div>
+
+    <div class="menu-items">
+      <a th:href="@{/new}">Home</a>
+
+      <a th:href="@{/authservice}">Services</a>
+      <a th:href="@{/posts}">Posts</a>
+      <a th:href="@{/admin/posts}">My Posts</a>
+
+
+      <!-- Simple Register button without logout or authentication check -->
+      <a th:href="@{/logout}" class="btn">Logout</a>
+    </div>
+
+    <div class="menu-icon">
+      <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+    </div>
+  </nav>
+
+
+<div  class="posts-container">
+  <h1>Posts</h1>
+  <div class="search-container">
+    <h4>Search</h4>
+    <form  th:action="@{/blog/page/search}"  method="GET" class="search-form">
+      <label>
+        <input type="text" name="query" placeholder="Search posts..." >
+      </label>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <div class="post-list">
+    <!-- Thymeleaf iteration for listing all posts -->
+    <div class="post-item" th:each="post : ${postsResponse}">
+      <h2 th:text="${post.tittle}"></h2> <!-- Post title -->
+      <div>
+        <strong th:text="${#temporals.format(post.createdOn,'dd MMM YYYY')}"></strong>
+        <div>
+          <strong>
+            <span th:utext="${post.shortDescription}"></span>
+          </strong>
+        </div>
+      </div>
+      <a th:href="@{/blog/authposts/view/{postUrl}(postUrl=${post.url})}" class="read-more-btn">Read More</a> <!-- "Read More" button -->
+    </div>
+  </div>
+
+</div>
+</div>
+<script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

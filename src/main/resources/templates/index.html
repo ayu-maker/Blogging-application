@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+  <link th:href="@{/css/clientpostview.css}" rel="stylesheet"/>
+  <link th:href="@{/css/postview.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="mobile-menu-items">
+    <div class="close-icon">
+        <img th:src="@{/images/close-icon.svg}" alt="Close Icon" />
+    </div>
+    <a th:href="@{/homepage}">Home</a>
+    <a th:href="@{/aboutUs}">About Us</a>
+    <a th:href="@{/blog/services}">Services</a>
+    <a th:href="@{/blogposts}">Posts</a>
+
+    <a th:href="@{/contactUs}">Contact Us</a>
+    <a th:href="@{/login}" class="btn">Login</a>
+</div>
+
+<div class="container">
+    <nav>
+        <div class="logo">
+            <a href="#">BLOGGERSIDE</a>
+        </div>
+
+        <div class="menu-items">
+            <a th:href="@{/homepage}">Home</a>
+            <a th:href="@{/aboutUs}">About Us</a>
+            <a th:href="@{/blog/services}">Services</a>
+            <a th:href="@{/blogposts}">Posts</a>
+
+            <a th:href="@{/contactUs}">Contact Us</a>
+            <a th:href="@{/login}" class="btn">Login</a>
+        </div>
+
+        <div class="menu-icon">
+            <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+        </div>
+    </nav>
+
+
+
+  <!-- End of navbar -->
+    <div th:fragment="header">
+  <header>
+    <div class="left">
+      <h1>Welcome to Your Knowledge Hub!</h1>
+      <p class="sub-heading">
+        Dive into a space where ideas thrive and learning never stops. Our platform is designed for readers and creators alike. Discover insightful posts across diverse topics, each with a clear heading, short description, and engaging content. Here, knowledge-sharing is easy and accessible.
+      </p>
+
+      <div class="buttons">
+        <a th:href="@{/join}" class="btn">Join Us</a>
+        <a th:href="@{/contactUs}" class="btn outlined">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="right">
+      <img th:src="@{/images/hero-image.png}" alt="Hero Image" />
+    </div>
+    <div class="bg-color"></div>
+  </header>
+    </div>
+
+<!-- End of hero section -->
+<div th:fragment="about">
+<section id="about">
+  <div class="container">
+    <div class="left">
+      <h2>Unlock the Power of Knowledge Sharing</h2>
+      <p>
+        Discover how our platform enables you to explore diverse topics, connect with like-minded individuals, and share your insights effortlessly.
+      </p>
+
+      <div class="features-container">
+        <div class="feature">
+          <div class="icon">
+            <img th:src="@{/images/check-icon.svg}" alt="Check Icon" />
+          </div>
+          <h3>Effortless Publishing</h3>
+          <p>
+            Create and publish your ideas with ease. Our platform makes it simple to contribute content and build your online presence.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">
+            <img th:src="@{/images/check-icon.svg}" alt="Check Icon" />
+          </div>
+          <h3>Dynamic & Intuitive Design</h3>
+          <p>
+            Enjoy a seamless, user-friendly experience, crafted to enhance reading and writing on any device.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <img th:src="@{/images/image1.jpg}" alt="About Image" />
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- End of about section  -->
+<div th:fragment="services">
+<section id="services">
+  <div class="container">
+    <div class="heading-container">
+      <h2>Service We Offer</h2>
+      <p>
+        We create a dynamic space for sharing knowledge and ideas, working closely with our community to make exploring, learning, and publishing easy and engaging.
+      </p>
+    </div>
+
+    <div class="services-container">
+      <div class="service">
+        <img th:src="@{/images/service1.jpg}" alt="Service Image 1" />
+        <div class="content">
+          <h3>Explore Diverse Topics</h3>
+          <p>
+            Dive into a wide range of posts, from tech and business to lifestyle and creativity. Discover new ideas and learn something new every day.
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <img th:src="@{/images/service2.jpg}" alt="Service Image 2" />
+        <div class="content">
+          <h3>Share Your Insights</h3>
+          <p>
+            Got something to say? Publish your own posts to share your knowledge and expertise. Our easy-to-use editor lets you create and publish with ease.
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <img th:src="@{/images/service3.jpg}" alt="Service Image 3" />
+        <div class="content">
+          <h3>Stay Updated with Fresh Content</h3>
+          <p>
+            Follow topics you love and stay up-to-date with the latest posts. With regular updates, there’s always something new to explore.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="posts-container">
+  <h1>Posts</h1>
+
+  <div class="post-list">
+    <!-- Thymeleaf iteration for listing the three most recent posts -->
+    <div class="post-item" th:each="post : ${posts}">
+      <h2 th:text="${post.tittle}"></h2> <!-- Post title -->
+      <div>
+        <strong th:text="${#temporals.format(post.createdOn,'dd MMM YYYY')}"></strong>
+        <div>
+          <strong>
+            <span th:utext="${post.shortDescription}"></span>
+          </strong>
+        </div>
+      </div>
+      <a th:href="@{/blog/posts/view/{postUrl}(postUrl=${post.url})}" class="read-more-btn">Read More</a> <!-- "Read More" button -->
+    </div>
+  </div>
+
+  <!-- Button to view all posts, shown after the recent posts -->
+  <div th:if="${showAllButton}">
+    <a href="#" th:href="@{/viewall}" class="view-all-btn">View All Posts</a>
+  </div>
+</div>
+
+
+    <section id="contact">
+        <div class="container">
+            <div class="heading-container">
+                <h2>Still have questions?</h2>
+                <p>Contact us for more information or assistance.</p>
+            </div>
+
+            <div th:if="${successmessage}">
+                <p th:text="${successmessage}" class="success-message"></p>
+            </div>
+
+            <form th:action="@{/submitmessage}" method="post">
+                <div class="group">
+                    <input type="text" name="fullName" placeholder="Full Name" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                </div>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+
+ <div th:fragment="footer">
+<footer>
+  <div class="container">
+    <div class="top">
+      <div class="left">
+        <a href="#" class="logo">LOGO</a>
+        <p>Creating innovative solutions for a connected world.</p>
+      </div>
+
+      <div class="right">
+        <p>Follow us on</p>
+        <div class="social">
+          <a href="#">
+            <img th:src="@{/images/x-logo.svg}" alt="X Logo" />
+          </a>
+          <a href="#">
+            <img th:src="@{/images/instagram-logo.svg}" alt="Instagram Logo" />
+          </a>
+          <a href="#">
+            <img th:src="@{/images/dribbble-logo.svg}" alt="Dribbble Logo" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      This website was developed by Live Blogger © 2024
+    </div>
+  </div>
+</footer>
+ </div>
+<script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

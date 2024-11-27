@@ -1,0 +1,64 @@
+/* Container padding to ensure navbar does not overlap content */
+.tablecontainer {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 80px 32px 0; /* Adjust top padding to match navbar height */
+}
+
+/* Table styling */
+table {
+  width: 80%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  font-size: 1.2em;
+  font-family: 'Arial', sans-serif;
+  text-align: left;
+}
+
+/* Table header and content styling */
+thead {
+  background-color: #333;
+  color: #fff;
+}
+
+th, td {
+  padding: 12px 15px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Button styling */
+.delete {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.delete:hover {
+  background-color: #d32f2f;
+}
+
+.delete:active {
+  background-color: #b71c1c;
+}

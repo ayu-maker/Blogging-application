@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="mobile-menu-items">
+  <div class="close-icon">
+    <img th:src="@{/images/close-icon.svg}" alt="Close Icon" />
+  </div>
+  <a th:href="@{/new}">Home</a>
+
+  <a th:href="@{/blog/services}">Services</a>
+  <a href="#posts" th:href="@{/posts}">Posts</a>
+  <a th:href="@{/admin/posts}">My Posts</a>
+
+  <a th:href="@{/logout}" class="btn">Logout</a>
+</div>
+
+<div class="container">
+  <nav>
+    <div class="logo">
+      <a th:href="@{/homepage}">BLOGGERSIDE</a>
+    </div>
+
+    <div class="menu-items">
+      <a th:href="@{/new}">Home</a>
+
+      <a th:href="@{/authservice}">Services</a>
+      <a href="#posts" th:href="@{/posts}">Posts</a>
+      <a href="#myposts" th:href="@{/admin/posts}">My Posts</a>
+
+      <a th:href="@{/logout}" class="btn">Logout</a>
+    </div>
+
+    <div class="menu-icon">
+      <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+    </div>
+  </nav>
+</div>
+
+<section id="services">
+  <div class="container">
+    <div class="heading-container">
+      <h2>Service We Offer</h2>
+      <p>
+        We create a dynamic space for sharing knowledge and ideas, working closely with our community to make exploring, learning, and publishing easy and engaging.
+      </p>
+    </div>
+
+    <div class="services-container">
+      <div class="service">
+        <img th:src="@{/images/service1.jpg}" alt="Explore Diverse Topics" />
+        <div class="content">
+          <h3>Explore Diverse Topics</h3>
+          <p>
+            Dive into a wide range of posts, from tech and business to lifestyle and creativity. Discover new ideas and learn something new every day.
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <img th:src="@{/images/service2.jpg}" alt="Share Your Insights" />
+        <div class="content">
+          <h3>Share Your Insights</h3>
+          <p>
+            Got something to say? Publish your own posts to share your knowledge and expertise. Our easy-to-use editor lets you create and publish with ease.
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <img th:src="@{/images/service3.jpg}" alt="Stay Updated with Fresh Content" />
+        <div class="content">
+          <h3>Stay Updated with Fresh Content</h3>
+          <p>
+            Follow topics you love and stay up-to-date with the latest posts. With regular updates, there’s always something new to explore.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="top">
+      <div class="left">
+        <a th:href="@{/homepage}" class="logo">LOGO</a>
+        <p>Creating innovative solutions for a connected world.</p>
+      </div>
+
+      <div class="right">
+        <p>Follow us on</p>
+        <div class="social">
+          <a href="#">
+            <img th:src="@{/images/x-logo.svg}" alt="X Logo" />
+          </a>
+          <a href="#">
+            <img th:src="@{/images/instagram-logo.svg}" alt="Instagram Logo" />
+          </a>
+          <a href="#">
+            <img th:src="@{/images/dribbble-logo.svg}" alt="Dribbble Logo" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      This website was developed by Live Blogger © 2024
+    </div>
+  </div>
+</footer>
+
+<script th:src="@{/jscript/main.js}"></script>
+
+
+</body>
+</html>

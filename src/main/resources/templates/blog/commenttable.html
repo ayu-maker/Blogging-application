@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link th:href="@{/css/header.css}" rel="stylesheet" />
+  <link th:href="@{/css/commentstyle.css}" rel="stylesheet" />
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="mobile-menu-items">
+  <div class="close-icon">
+    <img th:src="@{/images/close-icon.svg}" alt="Close Icon" />
+  </div>
+  <a th:href="@{/new}">Home</a>
+
+  <a th:href="@{/blog/services}">Services</a>
+  <a href="#posts" th:href="@{/posts}">Posts</a>
+  <a th:href="@{/admin/posts}">My Posts</a>
+  <a href="#" th:href="@{/admin/comments}">Comments</a>
+
+  <a th:href="@{/logout}" class="btn">Logout</a>
+</div>
+<div class="container">
+  <nav>
+    <div class="logo">
+      <a href="#">BLOGGERSIDE</a>
+    </div>
+
+    <div class="menu-items">
+      <a th:href="@{/new}">Home</a>
+
+      <a th:href="@{/user/authservice}">Services</a>
+      <a th:href="@{/user/posts}">Posts</a>
+      <a th:href="@{/user/admin/posts}">My Posts</a>
+      <a th:href="@{/admin/comments}">Comments</a>
+
+
+      <!-- Simple Register button without logout or authentication check -->
+      <a th:href="@{/logout}" class="btn">Logout</a>
+    </div>
+
+    <div class="menu-icon">
+      <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+    </div>
+  </nav>
+
+
+<div class="tablecontainer">
+<table>
+  <thead>
+
+  <th>#</th>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Content</th>
+  <th>Actions</th>
+  </thead>
+  <tbody>
+  <tr th:each="comment, commentStat: ${comments}">
+    <td th:text="${commentStat.count}">1</td>
+    <td th:text="${comment.name}">tittle</td>
+    <td th:text="${comment.email}">shortDescription</td>
+    <td th:text="${comment.content}">Content</td>
+    <td>
+   <a th:href="@{/admin/comment/{commentId}/delete(commentId=${comment.id})}" class="delete">Delete</a>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+</div>
+
+  <div th:replace="~{index:: footer}"></div>
+  <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

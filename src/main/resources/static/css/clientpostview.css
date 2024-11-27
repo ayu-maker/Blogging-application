@@ -1,0 +1,110 @@
+/* Container for the posts */
+.posts-container {
+
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling the header */
+.posts-container h1 {
+     margin-top:5rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* Post list item */
+.post-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Styling the post title */
+.post-item h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Styling the "Read More" button */
+.read-more-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the button */
+.read-more-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Adding a hover effect to the post items */
+.post-item:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/**** styling of searching container ***************/
+/* Search Container Styling */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-form:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Field Styling */
+.search-input {
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #333;
+    width: 250px;
+    background: none;
+    border-radius: 50px 0 0 50px;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+/* Button Styling */
+.search-button {
+    padding: 10px 20px;
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0 50px 50px 0;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #005bb5;
+}

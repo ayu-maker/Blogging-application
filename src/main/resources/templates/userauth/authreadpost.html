@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+  <link th:href="@{/css/clientpostview.css}" rel="stylesheet"/>
+  <link th:href="@{/css/postview.css}" rel="stylesheet"/>
+  <link th:href="@{/css/commentform.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="~{/userauth/newview::authnav}"></div>
+
+<div class="row">
+  <div class="postview" >
+    <h2 class="post-tittle" th:text="${post.tittle}"></h2>
+    <hr/>
+    <h4 th:text="${post.shortDescription}"></h4>
+    <hr/>
+    <div class="post-content" th:utext="${post.content}"></div>
+  </div>
+</div>
+  <h3 align="center">Comments:</h3>
+  <div th:each="comment:${post.comments}">
+    <div align="center">
+      <p><b>Name: </b><strong th:text="${comment.name}"></strong></p>
+      <p><b>Date: </b><strong th:text="${#temporals.format(comment.createdOn,'dd MMM YYYY')}"></strong></p>
+      <p th:text="${comment.content}"></p>
+
+    </div>
+  </div>
+  <form id="comment-form" th:action="@{/{postUrl}/comments(postUrl=${post.url})}"method="POST" th:object="${comment}">
+    <label for="name">Name:</label>
+    <input type="text" th:field="*{name}" id="name" name="name" />
+    <p th:if="${#fields.hasErrors('name')}"
+       th:errors="*{name}"
+       class="error"></p>
+
+    <label for="email">Email:</label>
+    <input type="email" th:field="*{email}" id="email" name="email" />
+    <p th:if="${#fields.hasErrors('email')}"
+       th:errors="*{email}"
+       class="error"></p>
+
+    <label for="content">Message:</label>
+    <textarea id="content" th:field="*{content}" name="content" ></textarea>
+    <p th:if="${#fields.hasErrors('content')}"
+       th:errors="*{content}"
+       class="error"></p>
+
+    <input type="submit" value="Submit">
+  </form>
+<div th:replace="~{index:: footer}"></div>
+<script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

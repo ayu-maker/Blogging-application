@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+
+  <link th:href="@{/css/clientpostview.css}" rel="stylesheet" />
+  <link th:href="@{/css/postview.css}" rel="stylesheet"/>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+  <title>Blog Posts</title>
+</head>
+<body>
+<div class="mobile-menu-items">
+  <div class="close-icon">
+    <img src="images/close-icon.svg" alt="" />
+  </div>
+  <a href="index.html" th:href="@{/homepage}">Home</a>
+
+  <a href="services.html" th:href="@{/blog/services}">Services</a>
+  <a href="#blog" th:href="@{blogposts}">Posts</a>
+
+  <a href="#contact" th:href="@{/contactUs}">Contact Us</a>
+  <a href="#" th:href="@{/register}" class="btn">Register</a>
+</div>
+
+<div class="container">
+  <nav>
+    <div class="logo">
+      <a href="#">BLOGGERSIDE</a>
+    </div>
+
+    <div class="menu-items">
+      <a href="index.html" th:href="@{/homepage}">Home</a>
+      <a href="about.html" th:href="@{/aboutUs}">About Us</a>
+      <a href="services.html" th:href="@{/blog/services}">Services</a>
+      <a href="#posts" th:href="@{/blogposts}">Posts</a>
+
+      <a href="#contact" th:href="@{/contactUs}">Contact Us</a>
+
+      <a href="#"th:href="@{/register}" class="btn">Register</a>
+    </div>
+
+    <div class="menu-icon">
+      <img src="images/menu-icon.svg" alt="" />
+    </div>
+  </nav>
+
+
+  <div class="posts-container">
+    <h1>Posts</h1>
+
+    <div class="post-list">
+      <!-- Thymeleaf iteration for listing the three most recent posts -->
+      <div class="post-item" th:each="post : ${posts}">
+        <h2 th:text="${post.tittle}"></h2> <!-- Post title -->
+        <div>
+          <strong th:text="${#temporals.format(post.createdOn,'dd MMM YYYY')}"></strong>
+          <div>
+            <strong>
+              <span th:utext="${post.shortDescription}"></span>
+            </strong>
+          </div>
+        </div>
+        <a th:href="@{/blog/posts/view/{postUrl}(postUrl=${post.url})}" class="read-more-btn">Read More</a> <!-- "Read More" button -->
+      </div>
+    </div>
+
+    <!-- Button to view all posts, shown after the recent posts -->
+    <div th:if="${showAllButton}">
+      <a href="#" th:href="@{/viewall}" class="view-all-btn">View All Posts</a>
+    </div>
+  </div>
+  <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

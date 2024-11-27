@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog posts</title>
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/newpost.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/clientpostview.css}" rel="stylesheet"/>
+    <link th:href="@{/css/postview.css}" rel="stylesheet"/>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #008bff;
+        }
+        h2{
+            margin-top:5rem;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div th:replace="~{/admin/newpost::comment}"></div>
+<h2>Blog Posts</h2>
+<div class="search-container">
+    <h4>Search</h4>
+    <form  th:action="@{/admin/posts/search}"  method="GET" class="search-form">
+        <label>
+            <input type="text" name="query" placeholder="Search posts..." >
+        </label>
+        <button type="submit">Search</button>
+    </form>
+</div>
+<br>
+<a href="#" th:href="@{/admin/post/newpost}" class="new-post-btn">New Post</a>
+<br><br>
+
+<table>
+    <thead>
+    <th>#</th>
+    <th>Post Title</th>
+    <th>Post Short Description</th>
+    <th>Post Created On</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+    <tr th:each="post, postStat: ${posts}">
+        <td th:text="${postStat.count}">1</td>
+        <td th:text="${post.tittle}">tittle</td>
+        <td th:text="${post.shortDescription}">shortDescription</td>
+        <td th:text="${#temporals.format(post.createdOn,'dd MMM YYYY')}">2 DEC 2024</td>
+        <td>
+            <div class="dropdown">
+                <button class="dropdown-btn">Actions</button>
+                <div class="dropdown-content">
+                    <a th:href="@{/admin/posts/{postId}/edit(postId=${post.id})}">Edit</a>
+                    <a th:href="@{/admin/posts/{postUrl}/view(postUrl=${post.url})}">View</a>
+                    <a th:href="@{/admin/posts/{postId}/delete(postId=${post.id})}" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div th:replace="~{index:: footer}"></div>
+
+    <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

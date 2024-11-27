@@ -1,0 +1,82 @@
+ .new-post-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Adding a plus icon before the text */
+        .new-post-btn::before {
+            content: "+";
+            margin-right: 8px;
+            font-size: 20px;
+        }
+
+        /* Hover effect */
+        .new-post-btn:hover {
+            background-color: #45a049;
+        }
+
+        /****************** Post form stylling **********/
+          .form-container {
+                    max-width: 600px;
+                    margin: 50px auto;
+                    padding: 20px;
+                    background-color: #f9f9f9;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    border-radius: 8px;
+                }
+
+                /* Styling form headings */
+                h2 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: #333;
+                }
+
+                /* General form styles */
+                form {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                label {
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                    color: #555;
+                }
+
+                input, textarea {
+                    padding: 10px;
+                    margin-bottom: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                    width: 100%;
+                }
+
+                textarea {
+                    height: 150px;
+                    resize: none;
+                }
+
+                /* Styling for submit button */
+                button {
+                    padding: 10px;
+                    background-color: #4CAF50;
+                    color: white;
+                    font-size: 16px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+
+                button:hover {
+                    background-color: #45a049;
+                }

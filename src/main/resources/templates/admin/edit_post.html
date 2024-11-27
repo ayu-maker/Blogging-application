@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Blog post</title>
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css">
+  <link th:href="@{/css/header.css}" rel="stylesheet" />
+  <link th:href="@{/css/newpost.css}" rel="stylesheet"/>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+  <style>
+    .error{
+    color:red;
+    }
+  </style>
+
+</head>
+<body>
+<div th:replace="~{/admin/newpost::comment}"></div>
+<div class="form-container">
+  <h2>Update Blog Post</h2>
+  <form action="#" th:action="@{/admin/posts/{postId}(postId=${post.id})}" method="POST" th:object="${post}">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{url}">
+    <input type="hidden" th:field="*{createdOn}">
+    <label for="tittle">Title</label>
+    <input type="text" id="tittle" th:field="*{tittle}" name="tittle" placeholder="Enter post title" >
+    <p th:if="${#fields.hasErrors('tittle')}"
+       th:errors="*{tittle}"
+       class="error"></p>
+
+    <label for="shortDescription">Short Description</label>
+    <input type="text" id="shortDescription" th:field="*{shortDescription}" name="short-description" placeholder="Enter short description" >
+    <p th:if="${#fields.hasErrors('shortDescription')}"
+       th:errors="*{shortDescription}"
+       class="error"></p>
+
+    <label for="content">Content</label>
+    <textarea id="content" th:field="*{content}" name="content" placeholder="Enter post content" ></textarea>
+    <p th:if="${#fields.hasErrors('content')}"
+       th:errors="*{content}"
+       class="error"></p>
+
+    <button type="submit">Update</button>
+  </form>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+
+  <script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.js",
+            "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.2.0/"
+        }
+    }
+  </script>
+  <script type="module">
+    import {
+        ClassicEditor,
+        Essentials,
+        Paragraph,
+        Bold,
+        Italic,
+        Font,
+        Image,
+        ImageToolbar,
+        ImageUpload,
+        ImageInsert,
+        Base64UploadAdapter
+    } from 'ckeditor5';
+
+    ClassicEditor
+        .create(document.querySelector('#content'), {
+            plugins: [
+                Essentials,
+                Paragraph,
+                Bold,
+                Italic,
+                Font,
+                Image,
+                ImageToolbar,
+                ImageUpload,
+                ImageInsert,
+                Base64UploadAdapter
+            ],
+            toolbar: [
+                'undo', 'redo', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
+                '|', 'imageUpload', 'imageInsert'
+            ],
+            image: {
+                toolbar: [
+                    'imageStyle:alignLeft',
+                    'imageStyle:full',
+                    'imageStyle:alignRight',
+                    '|',
+                    'imageTextAlternative'
+                ]
+            }
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+  </script>
+<div th:replace="~{index:: footer}"></div>
+  <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

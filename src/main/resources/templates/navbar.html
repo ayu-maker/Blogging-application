@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:fragment="navbar">
+    <div class="mobile-menu-items">
+        <div class="close-icon">
+            <img th:src="@{/images/close-icon.svg}" alt="Close Icon" />
+        </div>
+        <a th:href="@{/homepage}">Home</a>
+        <a th:href="@{/aboutUs}">About Us</a>
+        <a th:href="@{/blog/services}">Services</a>
+        <a th:href="@{/blogposts}">Posts</a>
+        <a th:href="@{/myPosts}">My Posts</a>
+        <a th:href="@{/contactUs}">Contact Us</a>
+        <a th:href="@{/login}" class="btn">Login</a>
+    </div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#">BLOGGERSIDE</a>
+            </div>
+
+            <div class="menu-items">
+                <a th:href="@{/homepage}">Home</a>
+                <a th:href="@{/aboutUs}">About Us</a>
+                <a th:href="@{/blog/services}">Services</a>
+                <a th:href="@{/blogposts}">Posts</a>
+
+                <a th:href="@{/contactUs}">Contact Us</a>
+                <a th:href="@{/login}" class="btn">Login</a>
+            </div>
+
+            <div class="menu-icon">
+                <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+            </div>
+        </nav>
+
+    </div>
+    <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

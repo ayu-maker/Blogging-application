@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link th:href="@{/css/register.css}" rel="stylesheet"/>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+  <style>
+    .alert{
+        color:green;
+    }
+    .error{
+        color:red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-menu-items">
+  <div class="close-icon">
+    <img src="images/close-icon.svg" alt="" />
+  </div>
+  <a href="index.html" th:href="@{/homepage}">Home</a>
+  <a href="about.html" th:href="@{/aboutUs}">About Us</a>
+  <a href="services.html" th:href="@{/blog/services}">Services</a>
+  <a href="#blog" th:href="@{/posts}">Posts</a>
+  <a href="#about">My Posts</a>
+  <a href="#contact" th:href="@{/contactUs}">Contact Us</a>
+  <a href="#" class="btn">Register</a>
+</div>
+
+<div class="container">
+  <nav>
+    <div class="logo">
+      <a href="#">BLOGGERSIDE</a>
+    </div>
+
+    <div class="menu-items">
+      <a href="index.html" th:href="@{/homepage}">Home</a>
+      <a href="about.html" th:href="@{/aboutUs}">About Us</a>
+      <a href="services.html" th:href="@{/blog/services}">Services</a>
+      <a href="#posts" th:href="@{/blogposts}">Posts</a>
+
+      <a href="#contact" th:href="@{/contactUs}">Contact Us</a>
+
+      <a href="#"th:href="@{/register}" class="btn">Register</a>
+    </div>
+
+    <div class="menu-icon">
+      <img src="images/menu-icon.svg" alt="" />
+    </div>
+  </nav>
+<div class="registration-form">
+  <h2>Register</h2>
+  <div th:if="${param.success}">
+    <p class="alert">You have successfully registered</p>
+  </div>
+  <br>
+  <form th:action="@{/register/save}" th:object="${user}" method="POST">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" th:field="*{firstName}" placeholder="Enter your First Name" >
+
+    </div>
+    <p th:if="${#fields.hasErrors('firstName')}" class="error" th:errors="*{firstName}"></p>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" th:field="*{lastName}" placeholder="Enter your Last Name" >
+
+    </div>
+    <p th:if="${#fields.hasErrors('lastName')}" class="error" th:errors="*{lastName}"></p>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" th:field="*{email}" placeholder="Enter your Email" >
+
+    </div>
+    <p th:if="${#fields.hasErrors('email')}" class="error" th:errors="*{email}"></p>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" th:field="*{password}" placeholder="Enter your Password" >
+
+    </div>
+    <p th:if="${#fields.hasErrors('password')}" class="error" th:errors="*{password}"></p>
+
+    <button type="submit" class="register-btn">Register</button>
+
+    <div class="form-group">
+      <span>Already Registered? <a href="#"th:href="@{/login}">Login</a></span>
+    </div>
+  </form>
+
+</div>
+  <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

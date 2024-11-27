@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link th:href="@{/css/style.css}" rel="stylesheet" />
+  <style>
+    .success-message{
+          color:green;
+    }
+  </style>
+</head>
+<body>
+<div class="mobile-menu-items">
+  <div class="close-icon">
+    <img th:src="@{/images/close-icon.svg}" alt="Close Icon" />
+  </div>
+  <a th:href="@{/homepage}">Home</a>
+  <a th:href="@{/about}">About Us</a>
+  <a th:href="@{/blog/services}">Services</a>
+  <a href="#posts" th:href="@{/posts}">Posts</a>
+
+  <a th:href="@{/contact}" >Contact Us</a>
+  <a th:href="@{/login}" class="btn">Login</a>
+</div>
+
+<div class="container">
+  <nav>
+    <div class="logo">
+      <a th:href="@{/homepage}">BLOGGERSIDE</a>
+    </div>
+
+    <div class="menu-items">
+      <a th:href="@{/homepage}">Home</a>
+      <a th:href="@{/about}">About Us</a>
+      <a th:href="@{/blog/services}">Services</a>
+      <a href="#posts" th:href="@{/blogposts}">Posts</a>
+
+      <a th:href="@{/contact}">Contact Us</a>
+      <a th:href="@{/login}" class="btn">Login</a>
+    </div>
+
+    <div class="menu-icon">
+      <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+    </div>
+  </nav>
+
+  <section id="contact">
+    <div class="container">
+      <div class="heading-container">
+        <h2>Still have questions?</h2>
+        <p>Contact us for more information or assistance.</p>
+      </div>
+
+      <div th:if="${successmessage}">
+        <p th:text="${successmessage}" class="success-message"></p>
+      </div>
+
+      <form th:action="@{/submitmessage}" method="post">
+        <div class="group">
+          <input type="text" name="fullName" placeholder="Full Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+        </div>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="container">
+      <div class="top">
+        <div class="left">
+          <a th:href="@{/homepage}" class="logo">LOGO</a>
+          <p>Creating innovative solutions for a connected world.</p>
+        </div>
+
+        <div class="right">
+          <p>Follow us on</p>
+          <div class="social">
+            <a href="#">
+              <img th:src="@{/images/x-logo.svg}" alt="X Logo" />
+            </a>
+            <a href="#">
+              <img th:src="@{/images/instagram-logo.svg}" alt="Instagram Logo" />
+            </a>
+            <a href="#">
+              <img th:src="@{/images/dribbble-logo.svg}" alt="Dribbble Logo" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        This website was developed by Live Blogger © 2024
+      </div>
+    </div>
+  </footer>
+
+  <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

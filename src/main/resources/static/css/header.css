@@ -1,0 +1,31 @@
+
+
+        /** Edit button styling *****/
+
+        .btn-edit {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A); /* Green gradient */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: all 0.4s ease; /* Smooth transition */
+        }
+
+        .btn-edit:hover {
+            background: linear-gradient(45deg, #8BC34A, #4CAF50); /* Reverse gradient on hover */
+            transform: scale(1.1); /* Slight zoom effect */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+            cursor: pointer;
+        }
+
+        .btn-edit:active {
+            transform: scale(0.98); /* Button pressed effect */
+            box-shadow: none; /* Remove shadow when active */
+        }
+
+        /********** styling for search posts feature  ***********/
+

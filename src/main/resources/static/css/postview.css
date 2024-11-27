@@ -1,0 +1,161 @@
+.post-list {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of items */
+    gap: 20px; /* Space between columns */
+    justify-content: space-between; /* Distribute space evenly */
+    margin-top:6rem;
+    margin: 0 auto; /* Center the post list */
+    max-width: 1200px; /* Limit maximum width */
+}
+
+.post-item {
+    background-color: #f9f9f9; /* Light background for posts */
+    border: 1px solid #ddd; /* Border around each post */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner spacing */
+    width: calc(50% - 20px); /* Two columns with gap consideration */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    transition: transform 0.3s; /* Smooth transform effect on hover */
+}
+
+.post-item:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.post-item h2 {
+    font-size: 1.5rem; /* Font size for post title */
+    margin-bottom: 10px ;/* Space below title */
+
+
+}
+
+.post-item strong {
+    display: block; /* Make date and description block elements */
+    margin-bottom: 10px; /* Space below date */
+    color: #555; /* Color for the date */
+}
+
+.read-more-btn {
+    display: inline-block; /* Button display */
+    padding: 10px 15px; /* Padding for button */
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+.post-tittle{
+    margin-top:7rem;
+}
+
+.read-more-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* General styling for the post content */
+.post-content {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Text color */
+}
+
+/* Ensure images inside content do not overlap */
+.post-content img {
+    max-width: 50%; /* Ensure image fits within its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Avoid inline alignment issues */
+    margin: 1rem auto; /* Center images with some spacing */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+/* Optional: Add some padding to the container */
+.postview {
+    padding: 2rem;
+    background-color: #f9f9f9; /* Optional: Light background */
+    border: 1px solid #ddd; /* Optional: Border for the container */
+    border-radius: 8px; /* Optional: Rounded corners for the container */
+}
+
+@media (max-width: 768px) {
+    .post-item {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+
+
+
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Button */
+.dropdown-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Links inside Dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+/* Links hover effect */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show Dropdown on Button Click */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/*********View all button style ************/
+/* Base Styling for the Button */
+.view-all-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #5a2d82; /* Dark Purple */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.view-all-btn:hover {
+    background-color: #461f66; /* Darker Purple on Hover */
+    transform: scale(1.05); /* Slight Zoom Effect */
+    text-decoration: none;
+}
+

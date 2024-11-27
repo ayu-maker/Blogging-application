@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link th:href="@{/css/header.css}" rel="stylesheet" />
+  <link th:href="@{/css/newpost.css}" rel="stylesheet"/>
+  <link th:href="@{/css/postview.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+<div th:replace="~{/admin/newpost::comment}"></div>
+
+    <div class="row">
+      <div class="postview" >
+        <h2 class="post-tittle" th:text="${post.tittle}"></h2>
+        <hr/>
+        <h4 th:text="${post.shortDescription}"></h4>
+        <hr/>
+        <div class="post-content" th:utext="${post.content}"></div>
+      </div>
+    </div>
+
+<div th:replace="~{index:: footer}"></div>
+    <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

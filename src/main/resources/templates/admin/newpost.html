@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Blog post</title>
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css">
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/newpost.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+    <style>
+    .error{
+    color:red;
+    }
+    </style>
+
+</head>
+<body>
+<div th:fragment="comment">
+<div class="mobile-menu-items">
+    <div class="close-icon">
+        <img th:src="@{/images/close-icon.svg}" alt="Close Icon" />
+    </div>
+    <a th:href="@{/new}">Home</a>
+
+    <a th:href="@{/blog/services}">Services</a>
+    <a href="#posts" th:href="@{/posts}">Posts</a>
+    <a th:href="@{/admin/posts}">My Posts</a>
+    <a href="#" th:href="@{/admin/comments}">Comments</a>
+    <a th:href="@{/logout}" class="btn">Logout</a>
+</div>
+
+<div class="container">
+    <nav>
+        <div class="logo">
+            <a th:href="@{/homepage}">BLOGGERSIDE</a>
+        </div>
+
+        <div class="menu-items">
+            <a th:href="@{/new}">Home</a>
+
+            <a th:href="@{/authservice}">Services</a>
+            <a href="#posts" th:href="@{/posts}">Posts</a>
+            <a href="#myposts" th:href="@{/admin/posts}">My Posts</a>
+            <a href="#" th:href="@{/admin/comments}">Comments</a>
+            <a th:href="@{/logout}" class="btn">Logout</a>
+        </div>
+
+        <div class="menu-icon">
+            <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+        </div>
+    </nav>
+</div>
+</div>
+
+<div class="form-container">
+    <h2>Create Blog Post</h2>
+    <form action="#" th:action="@{/admin/posts}" method="POST" th:object="${post}">
+        <label for="tittle">Title</label>
+        <input type="text" id="tittle" th:field="*{tittle}" name="tittle" placeholder="Enter post title" >
+        <p th:if="${#fields.hasErrors('tittle')}"
+              th:errors="*{tittle}"
+              class="error"></p>
+
+        <label for="shortDescription">Short Description</label>
+        <input type="text" id="shortDescription" th:field="*{shortDescription}" name="short-description" placeholder="Enter short description" >
+        <p th:if="${#fields.hasErrors('shortDescription')}"
+              th:errors="*{shortDescription}"
+              class="error"></p>
+
+        <label for="content">Content</label>
+        <textarea id="content" th:field="*{content}" name="content" placeholder="Enter post content" ></textarea>
+        <p th:if="${#fields.hasErrors('content')}"
+              th:errors="*{content}"
+              class="error"></p>
+
+        <button type="submit">Create</button>
+    </form>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.js",
+                "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.2.0/"
+            }
+        }
+    </script>
+    <script type="module">
+        import {
+            ClassicEditor,
+            Essentials,
+            Paragraph,
+            Bold,
+            Italic,
+            Font,
+            Image,
+            ImageToolbar,
+            ImageUpload,
+            ImageInsert,
+            Base64UploadAdapter
+        } from 'ckeditor5';
+
+        ClassicEditor
+            .create(document.querySelector('#content'), {
+                plugins: [
+                    Essentials,
+                    Paragraph,
+                    Bold,
+                    Italic,
+                    Font,
+                    Image,
+                    ImageToolbar,
+                    ImageUpload,
+                    ImageInsert,
+                    Base64UploadAdapter
+                ],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
+                    '|', 'imageUpload', 'imageInsert'
+                ],
+                image: {
+                    toolbar: [
+                        'imageStyle:alignLeft',
+                        'imageStyle:full',
+                        'imageStyle:alignRight',
+                        '|',
+                        'imageTextAlternative'
+                    ]
+                }
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+<div th:replace="~{index:: footer}"></div>
+
+    <script th:src="@{/jscript/main.js}"></script>
+</body>
+</html>

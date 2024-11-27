@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="mobile-menu-items">
+    <div class="close-icon">
+        <img th:src="@{/images/close-icon.svg}" alt="Close Icon" />
+    </div>
+    <a th:href="@{/new}">Home</a>
+
+    <a th:href="@{/authservices}">Services</a>
+    <a href="#blog" th:href="@{/authposts}">Posts</a>
+
+    <a th:href="@{/admin/posts}">My Posts</a>
+    <a th:href="@{/logout}" class="btn">Logout</a>
+</div>
+
+<div class="container">
+    <nav>
+        <div class="logo">
+            <a th:href="@{/homepage}">BLOGGERSIDE</a>
+        </div>
+
+        <div class="menu-items">
+            <a th:href="@{/new}">Home</a>
+
+            <a th:href="@{/blog/services}">Services</a>
+            <a href="#posts" th:href="@{/authposts}">Posts</a>
+            <a href="#posts" th:href="@{/admin/posts}">My Posts</a>
+
+
+            <a th:href="@{/logout}" class="btn">Logout</a>
+        </div>
+
+        <div class="menu-icon">
+            <img th:src="@{/images/menu-icon.svg}" alt="Menu Icon" />
+        </div>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <div class="left">
+                <h2>Unlock the Power of Knowledge Sharing</h2>
+                <p>
+                    Discover how our platform enables you to explore diverse topics, connect with like-minded individuals, and share your insights effortlessly.
+                </p>
+
+                <div class="features-container">
+                    <div class="feature">
+                        <div class="icon">
+                            <img th:src="@{/images/check-icon.svg}" alt="Check Icon" />
+                        </div>
+                        <h3>Effortless Publishing</h3>
+                        <p>
+                            Create and publish your ideas with ease. Our platform makes it simple to contribute content and build your online presence.
+                        </p>
+                    </div>
+
+                    <div class="feature">
+                        <div class="icon">
+                            <img th:src="@{/images/check-icon.svg}" alt="Check Icon" />
+                        </div>
+                        <h3>Dynamic & Intuitive Design</h3>
+                        <p>
+                            Enjoy a seamless, user-friendly experience, crafted to enhance reading and writing on any device.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <img th:src="@{/images/image1.jpg}" alt="About Image" />
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="top">
+                <div class="left">
+                    <a th:href="@{/homepage}" class="logo">LOGO</a>
+                    <p>Creating innovative solutions for a connected world.</p>
+                </div>
+
+                <div class="right">
+                    <p>Follow us on</p>
+                    <div class="social">
+                        <a href="#">
+                            <img th:src="@{/images/x-logo.svg}" alt="X Logo" />
+                        </a>
+                        <a href="#">
+                            <img th:src="@{/images/instagram-logo.svg}" alt="Instagram Logo" />
+                        </a>
+                        <a href="#">
+                            <img th:src="@{/images/dribbble-logo.svg}" alt="Dribbble Logo" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                This website was developed by Live Blogger © 2024
+            </div>
+        </div>
+    </footer>
+
+    <script th:src="@{/jscript/main.js}"></script>
+
+</body>
+</html>

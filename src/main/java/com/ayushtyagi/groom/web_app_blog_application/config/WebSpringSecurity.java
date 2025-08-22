@@ -70,9 +70,6 @@ public class WebSpringSecurity {
 
         return http.build();
     }
-    public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception {
-        builder.userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
-    }
+
 
 }
